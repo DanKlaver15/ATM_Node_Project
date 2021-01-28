@@ -7,10 +7,11 @@ const atm = require("./atm");
 
 console.log("Hello. Please enter your PIN");
 
-let enteredPin = parseInt(prompt());
+let enteredPin = parseInt(prompt().trim());
+
 while (!atm.validatePin(enteredPin)) {
    console.log("I'm sorry, but the PIN you entered is incorrect. Please try again.");
-   enteredPin = prompt();
+   enteredPin = parseInt(prompt());
 }
 
 if (atm.validatePin(enteredPin)) {
@@ -21,22 +22,23 @@ if (atm.validatePin(enteredPin)) {
 
 function mainMenu() {
    console.log("Welcome to the Main Menu.  Please choose from the following options:" + "\n" +
-   "Enter the word 'balance' to check your current balance." + "\n" +
-   "Enter the word 'withdraw' to make a withdrawl." + "\n" +
-   "Enter the word 'deposit' to make a deposit." + "\n" +
-   "You may alse enter 'exit' stop using this ATM.");
-   let displayOption = prompt().toLowerCase();
-   while (displayOption !== "balance" || displayOption !== "withdraw" || displayOption !== "deposit") {
+   "Enter the number 1 to check your current balance." + "\n" +
+   "Enter the number 2 to make a withdrawl." + "\n" +
+   "Enter the number 3 to make a deposit." + "\n" +
+   "You may alse enter the number 4 stop using this ATM.");
+   let displayOption = parseInt(prompt().trim());
+
+   while (displayOption !== 1 && displayOption !== 2 && displayOption !== 3 && displayOption !== 4) {
       console.log("I'm sorry, but the option you entered is not valid. Please try again." + "\n" +
       "Enter the word 'balance' to check your current balance." + "\n" +
       "Enter the word 'withdraw' to make a withdrawl." + "\n" +
       "Enter the word 'deposit' to make a deposit."  + "\n" +
       "You may alse enter 'exit' stop using this ATM.");
-      displayOption = prompt().toLowerCase();
+      displayOption = prompt().trim().toLowerCase();
    }
 
    switch(displayOption) {
-      case "balance":
+      case 1:
          atm.getBalance();
          console.log("Would you like to return to the main menu? Please enter 'yes' to do so, otherwise enter 'exit' if you are finished using this ATM");
          let balanceResponse = prompt().toLowerCase();
@@ -46,7 +48,7 @@ function mainMenu() {
          else {
             return;
          }
-      case "withdraw":
+      case 2:
          console.log("How much would you like to withdraw?")
          let withdrawAmount = parseInt(prompt());
          while (!Number.isInteger(withdrawAmount)) {
@@ -66,7 +68,7 @@ function mainMenu() {
          else {
             return;
          }
-      case "deposit":
+      case 3:
          console.log("How much would you like to deposit?");
          let depositAmount = parseInt(prompt());
          while (!Number.isInteger(depositAmount)) {
@@ -82,7 +84,7 @@ function mainMenu() {
          else {
             return;
          }
-      case "exit":
+      case 4:
       return;
       default:
          return mainMenu();
