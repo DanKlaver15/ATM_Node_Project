@@ -42,10 +42,14 @@ function mainMenu() {
          atm.getBalance();
          console.log("Would you like to return to the main menu? Please enter 'yes' to do so, otherwise enter 'exit' if you are finished using this ATM");
          let balanceResponse = prompt().toLowerCase();
-         if (balanceResponse === 'yes') {
+         while (balanceResponse !== 'yes' && balanceResponse !== "exit") {
+            console.log("Your response was invalid. Would you like to return to the main menu? Please enter 'yes' to do so, otherwise enter 'exit' if you are finished using this ATM");
+            balanceResponse = prompt().trim().toLowerCase();
+         }
+         if (balanceResponse === "yes") {
             return mainMenu();
          }
-         else {
+         else if (balanceResponse === "exit") {
             return;
          }
       case 2:
@@ -61,11 +65,15 @@ function mainMenu() {
          } 
          console.log("Thank you. Your new balance is: $" + atm.withdraw(withdrawAmount));
          console.log("Would you like to return to the main menu? Please enter 'yes' to do so, otherwise enter 'exit' if you are finished using this ATM");
-         let withdrawResponse = prompt().toLowerCase();
-         if (withdrawResponse === 'yes') {
+         let withdrawResponse = prompt().trim().toLowerCase();
+         while (withdrawResponse !== 'yes' && withdrawResponse !== "exit") {
+            console.log("Your response was invalid. Would you like to return to the main menu? Please enter 'yes' to do so, otherwise enter 'exit' if you are finished using this ATM");
+            withdrawResponse = prompt().trim().toLowerCase();
+         }
+         if (withdrawResponse === "yes") {
             return mainMenu();
          }
-         else {
+         else if (withdrawResponse === "exit") {
             return;
          }
       case 3:
@@ -77,11 +85,15 @@ function mainMenu() {
          }
          console.log("Thank you. Your new balance is: $" + atm.deposit(depositAmount));
          console.log("Would you like to return to the main menu? Please enter 'yes' to do so, otherwise enter 'exit' if you are finished using this ATM");
-         let depositResponse = prompt().toLowerCase();
-         if (depositResponse === 'yes') {
+         let depositResponse = prompt().trim().toLowerCase();
+         while (depositResponse !== 'yes' && depositResponse !== "exit") {
+            console.log("Your response was invalid. Would you like to return to the main menu? Please enter 'yes' to do so, otherwise enter 'exit' if you are finished using this ATM");
+            depositResponse = prompt().trim().toLowerCase();
+         }
+         if (depositResponse === "yes") {
             return mainMenu();
          }
-         else {
+         else if (depositResponse === "exit") {
             return;
          }
       case 4:
