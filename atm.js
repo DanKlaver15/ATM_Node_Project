@@ -2,6 +2,8 @@
 
 // Functions for use of the ATM
 
+const account = require("./account");
+
 function getBalance(balance) {
 	console.log(balance);
 }
