@@ -64,6 +64,7 @@ function mainMenu() {
             withdrawAmount = parseInt(prompt());
          } 
          console.log("Thank you. Your new balance is: $" + atm.withdraw(withdrawAmount));
+         module.exports.withdrawAmount = withdrawAmount;
          console.log("Would you like to return to the main menu? Please enter 'yes' to do so, otherwise enter 'exit' if you are finished using this ATM");
          let withdrawResponse = prompt().trim().toLowerCase();
          while (withdrawResponse !== 'yes' && withdrawResponse !== "exit") {
@@ -84,6 +85,7 @@ function mainMenu() {
             depositAmount = parseInt(prompt());
          }
          console.log("Thank you. Your new balance is: $" + atm.deposit(depositAmount));
+         module.exports.depositAmount = depositAmount;
          console.log("Would you like to return to the main menu? Please enter 'yes' to do so, otherwise enter 'exit' if you are finished using this ATM");
          let depositResponse = prompt().trim().toLowerCase();
          while (depositResponse !== 'yes' && depositResponse !== "exit") {
@@ -104,6 +106,3 @@ function mainMenu() {
 }
 
 console.log("Thank you, and have a nice day!");
-
-module.exports.depositAmount = depositAmount;
-module.exports.withdrawAmount = withdrawAmount;
