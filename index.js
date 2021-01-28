@@ -59,7 +59,7 @@ function mainMenu() {
             console.log("The amount you have entered is invalid. Please enter an integer for withdrawl.");
             withdrawAmount = parseInt(prompt());
          }
-         while (withdrawAmount > atm.balance) {
+         while (withdrawAmount > parseInt(atm.balance)) {
             console.log("Insufficient funds.  Please enter a number less than " + atm.balance);
             withdrawAmount = parseInt(prompt());
          } 
