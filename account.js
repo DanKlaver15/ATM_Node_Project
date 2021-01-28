@@ -5,3 +5,6 @@
 let accBalance = 1000;
 
 let pinNum = 1234;
+
+module.exports.accBalance = accBalance;
+module.exports.pinNum = pinNum;
