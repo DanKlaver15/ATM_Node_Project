@@ -5,7 +5,7 @@
 const account = require("./account");
 
 function getBalance() {
-	console.log("$" + account.balance);
+	console.log("Your balance is: $" + account.balance);
 }
 
 function withdraw(amount) {
