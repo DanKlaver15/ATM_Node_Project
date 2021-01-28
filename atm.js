@@ -4,24 +4,24 @@
 
 const account = require("./account");
 
-function getBalance(balance) {
-	console.log(balance);
+function getBalance() {
+	console.log(account.balance);
 }
 
-function withdraw(amount, balance) {
-	return balance - amount;
+function withdraw(amount) {
+	return account.balance - amount;
 }
 
-function deposit(amount, balance) {
-	return balance + amount;
+function deposit(amount) {
+	return account.balance + amount;
 }
 
-function validatePin(number, pin) {
-	if (number === pin) {
-		 return pin;
+function validatePin(number) {
+	if (number === account.pinNum) {
+		 return true;
 	}
 	else {
-		 console.log("The PIN you entered is invalid. Please try again.");
+		 return false;
 	}
 }
 
@@ -29,3 +29,4 @@ module.exports.getBalance = getBalance;
 module.exports.withdraw = withdraw;
 module.exports.deposit = deposit;
 module.exports.validatePin = validatePin;
+module.exports.account.balance = balance;
