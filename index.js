@@ -7,7 +7,7 @@ const atm = require("./atm");
 
 console.log("Hello. Please enter your PIN");
 
-let enteredPin = prompt();
+let enteredPin = parseInt(prompt());
 while (!atm.validatePin(enteredPin)) {
    console.log("I'm sorry, but the PIN you entered is incorrect. Please try again.");
    enteredPin = prompt();
@@ -39,8 +39,8 @@ function mainMenu() {
       case "balance":
          atm.getBalance();
          console.log("Would you like to return to the main menu? Please enter 'yes' to do so, otherwise enter 'exit' if you are finished using this ATM");
-         let response = prompt().toLowerCase();
-         if (response === 'yes') {
+         let balanceResponse = prompt().toLowerCase();
+         if (balanceResponse === 'yes') {
             return mainMenu();
          }
          else {
@@ -59,8 +59,8 @@ function mainMenu() {
          } 
          console.log("Thank you. Your new balance is: $" + atm.withdraw(withdrawAmount));
          console.log("Would you like to return to the main menu? Please enter 'yes' to do so, otherwise enter 'exit' if you are finished using this ATM");
-         let response = prompt().toLowerCase();
-         if (response === 'yes') {
+         let withdrawResponse = prompt().toLowerCase();
+         if (withdrawResponse === 'yes') {
             return mainMenu();
          }
          else {
@@ -75,8 +75,8 @@ function mainMenu() {
          }
          console.log("Thank you. Your new balance is: $" + atm.deposit(depositAmount));
          console.log("Would you like to return to the main menu? Please enter 'yes' to do so, otherwise enter 'exit' if you are finished using this ATM");
-         let response = prompt().toLowerCase();
-         if (response === 'yes') {
+         let depositResponse = prompt().toLowerCase();
+         if (depositResponse === 'yes') {
             return mainMenu();
          }
          else {
