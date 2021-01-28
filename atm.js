@@ -4,16 +4,18 @@
 
 const account = require("./account");
 
+let balance = account.balance;
+
 function getBalance() {
 	console.log("Your balance is: $" + account.balance);
 }
 
 function withdraw(amount) {
-	return account.balance - amount;
+	return account.balance -= amount;
 }
 
 function deposit(amount) {
-	return account.balance + amount;
+	return account.balance += amount;
 }
 
 function validatePin(number) {
@@ -29,4 +31,4 @@ module.exports.getBalance = getBalance;
 module.exports.withdraw = withdraw;
 module.exports.deposit = deposit;
 module.exports.validatePin = validatePin;
-// module.exports.account.balance = balance;
+module.exports.balance = balance;
