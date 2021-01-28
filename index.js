@@ -104,3 +104,6 @@ function mainMenu() {
 }
 
 console.log("Thank you, and have a nice day!");
+
+module.exports.depositAmount = depositAmount;
+module.exports.withdrawAmount = withdrawAmount;
