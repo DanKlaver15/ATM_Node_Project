@@ -34,7 +34,7 @@ function mainMenu() {
       "Enter the number 2 to make a withdrawl." + "\n" +
       "Enter the number 3 to make a deposit."  + "\n" +
       "You may alse enter the number 4 to stop using this ATM.");
-      displayOption = prompt().trim().toLowerCase();
+      displayOption = parseInt(prompt().trim().toLowerCase());
    }
 
    switch(displayOption) {
@@ -86,7 +86,7 @@ function mainMenuWithdraw() {
    while (withdrawAmount > parseInt(atm.balance)) {
       console.log("Insufficient funds.  Please enter a number less than " + atm.balance);
       withdrawAmount = parseInt(prompt());
-   } 
+   }
    console.log("Thank you. Your new balance is: $" + atm.withdraw(withdrawAmount));
    module.exports.withdrawAmount = withdrawAmount;
    console.log("Would you like to return to the main menu? Please enter 'yes' to do so, otherwise enter 'exit' if you are finished using this ATM");
