@@ -6,14 +6,11 @@ const prompt = require("prompt-sync")();
 const atm = require("./atm");
 
 console.log("Hello. Please enter your PIN");
-
 let enteredPin = parseInt(prompt().trim());
-
 while (!atm.validatePin(enteredPin)) {
    console.log("I'm sorry, but the PIN you entered is incorrect. Please try again.");
    enteredPin = parseInt(prompt());
 }
-
 if (atm.validatePin(enteredPin)) {
    mainMenu();
 }
@@ -27,7 +24,6 @@ function mainMenu() {
    "Enter the number 3 to make a deposit." + "\n" +
    "You may alse enter the number 4 to stop using this ATM.");
    let displayOption = parseInt(prompt().trim());
-
    while (displayOption !== 1 && displayOption !== 2 && displayOption !== 3 && displayOption !== 4) {
       console.log("I'm sorry, but the option you entered is not valid. Please try again." + "\n" +
       "Enter the number 1 to check your current balance." + "\n" +
@@ -60,18 +56,7 @@ console.log("Thank you, and have a nice day!");
 
 function mainMenuBalance() {
    atm.getBalance();
-   console.log("Would you like to return to the main menu? Please enter 'yes' to do so, otherwise enter 'exit' if you are finished using this ATM");
-   let balanceResponse = prompt().toLowerCase();
-   while (balanceResponse !== 'yes' && balanceResponse !== "exit") {
-      console.log("Your response was invalid. Would you like to return to the main menu? Please enter 'yes' to do so, otherwise enter 'exit' if you are finished using this ATM");
-      balanceResponse = prompt().trim().toLowerCase();
-   }
-   if (balanceResponse === "yes") {
-      return mainMenu();
-   }
-   else if (balanceResponse === "exit") {
-      return;
-   }
+   menuReturn();
 }
 
 /*====================================================================*/
@@ -81,18 +66,7 @@ function mainMenuWithdraw() {
    let withdrawAmount = parseInt(prompt());
    atm.withdraw(withdrawAmount);
    module.exports.withdrawAmount = withdrawAmount;
-   console.log("Would you like to return to the main menu? Please enter 'yes' to do so, otherwise enter 'exit' if you are finished using this ATM");
-   let withdrawResponse = prompt().trim().toLowerCase();
-   while (withdrawResponse !== 'yes' && withdrawResponse !== "exit") {
-      console.log("Your response was invalid. Would you like to return to the main menu? Please enter 'yes' to do so, otherwise enter 'exit' if you are finished using this ATM");
-      withdrawResponse = prompt().trim().toLowerCase();
-   }
-   if (withdrawResponse === "yes") {
-      return mainMenu();
-   }
-   else if (withdrawResponse === "exit") {
-      return;
-   }
+   menuReturn();
 }
 
 /*====================================================================*/
@@ -102,18 +76,22 @@ function mainMenuDeposit() {
    let depositAmount = parseInt(prompt());
    atm.deposit(depositAmount);
    module.exports.depositAmount = depositAmount;
-   console.log("Would you like to return to the main menu? Please enter 'yes' to do so, otherwise enter 'exit' if you are finished using this ATM");
-   let depositResponse = prompt().trim().toLowerCase();
-   while (depositResponse !== 'yes' && depositResponse !== "exit") {
-      console.log("Your response was invalid. Would you like to return to the main menu? Please enter 'yes' to do so, otherwise enter 'exit' if you are finished using this ATM");
-      depositResponse = prompt().trim().toLowerCase();
-   }
-   if (depositResponse === "yes") {
-      return mainMenu();
-   }
-   else if (depositResponse === "exit") {
-      return;
-   }
+   menuReturn();
 }
 
 /*====================================================================*/
+
+function menuReturn() {
+   console.log("Would you like to return to the main menu? Please enter 'yes' to do so, otherwise enter 'exit' if you are finished using this ATM");
+   let response = prompt().trim().toLowerCase();
+   while (response !== 'yes' && response !== "exit") {
+      console.log("Your response was invalid. Would you like to return to the main menu? Please enter 'yes' to do so, otherwise enter 'exit' if you are finished using this ATM");
+      response = prompt().trim().toLowerCase();
+   }
+   if (response === "yes") {
+      return mainMenu();
+   }
+   else if (response === "exit") {
+      return;
+   }
+}
