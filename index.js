@@ -79,15 +79,7 @@ function mainMenuBalance() {
 function mainMenuWithdraw() {
    console.log("How much would you like to withdraw?")
    let withdrawAmount = parseInt(prompt());
-   while (!Number.isInteger(withdrawAmount)) {
-      console.log("The amount you have entered is invalid. Please enter an integer for withdrawl.");
-      withdrawAmount = parseInt(prompt());
-   }
-   while (withdrawAmount > parseInt(atm.balance)) {
-      console.log("Insufficient funds.  Please enter a number less than " + atm.balance);
-      withdrawAmount = parseInt(prompt());
-   }
-   console.log("Thank you. Your new balance is: $" + atm.withdraw(withdrawAmount));
+   atm.withdraw(withdrawAmount);
    module.exports.withdrawAmount = withdrawAmount;
    console.log("Would you like to return to the main menu? Please enter 'yes' to do so, otherwise enter 'exit' if you are finished using this ATM");
    let withdrawResponse = prompt().trim().toLowerCase();
@@ -108,11 +100,7 @@ function mainMenuWithdraw() {
 function mainMenuDeposit() {
    console.log("How much would you like to deposit?");
    let depositAmount = parseInt(prompt());
-   while (!Number.isInteger(depositAmount)) {
-      console.log("The amount you have entered is invalid. Please enter an integer for deposit.");
-      depositAmount = parseInt(prompt());
-   }
-   console.log("Thank you. Your new balance is: $" + atm.deposit(depositAmount));
+   atm.deposit(depositAmount);
    module.exports.depositAmount = depositAmount;
    console.log("Would you like to return to the main menu? Please enter 'yes' to do so, otherwise enter 'exit' if you are finished using this ATM");
    let depositResponse = prompt().trim().toLowerCase();
