@@ -63,7 +63,7 @@ function mainMenuBalance() {
 
 function mainMenuWithdraw() {
    console.log("How much would you like to withdraw?")
-   let withdrawAmount = parseInt(prompt());
+   let withdrawAmount = prompt();
    atm.withdraw(withdrawAmount);
    module.exports.withdrawAmount = withdrawAmount;
    menuReturn();
@@ -73,7 +73,7 @@ function mainMenuWithdraw() {
 
 function mainMenuDeposit() {
    console.log("How much would you like to deposit?");
-   let depositAmount = parseInt(prompt());
+   let depositAmount = prompt();
    atm.deposit(depositAmount);
    module.exports.depositAmount = depositAmount;
    menuReturn();
