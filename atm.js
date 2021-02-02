@@ -5,39 +5,45 @@
 const account = require("./account");
 const prompt = require("prompt-sync")();
 
-let balance = account.balance;
+let balance = parseFloat(account.balance);
 
 /*====================================================================*/
 
 function getBalance() {
-	console.log("Your balance is: $" + balance);
+	console.log("Your balance is: $" + balance.toFixed(2));
 }
 
 /*====================================================================*/
 
 function withdraw(amount) {
-	while (!Number.isInteger(amount)) {
-      console.log("The amount you have entered is invalid. Please enter an integer for withdrawl.");
-      amount = parseInt(prompt());
+   while (notANumber(amount)) {
+      console.log("The amount you have entered is invalid. Please enter a number for withdrawl.");
+      amount = prompt();
    }
-   while (amount > parseInt(balance)) {
-      console.log("Insufficient funds.  Please enter a number less than " + balance);
-      amount = parseInt(prompt());
+
+   while (amount > balance) {
+      console.log("Insufficient funds.  Please enter a number less than " + balance.toFixed(2));
+      amount = prompt();
+      while (notANumber(amount)) {
+         console.log("The amount you have entered is invalid. Please enter a number for withdrawl.");
+         amount = prompt();
+      }
    }
-   balance -= amount;
-   console.log("Thank you. Your new balance is: $" + balance);
+
+   balance -= parseFloat(amount);
+   console.log("Thank you. Your new balance is: $" + balance.toFixed(2));
 	return balance;
 }
 
 /*====================================================================*/
 
 function deposit(amount) {
-	while (!Number.isInteger(amount)) {
-      console.log("The amount you have entered is invalid. Please enter an integer for deposit.");
-      amount = parseInt(prompt());
+	while (notANumber(amount)) {
+      console.log("The amount you have entered is invalid. Please enter a number for deposit.");
+      amount = prompt();
    }
-   balance += amount;
-   console.log("Thank you. Your new balance is: $" + balance);
+   balance += parseFloat(amount);
+   console.log("Thank you. Your new balance is: $" + balance.toFixed(2));
 	return balance;
 }
 
@@ -53,6 +59,21 @@ function validatePin(number) {
 }
 
 /*====================================================================*/
+
+function notANumber (amount) {
+   let regex = new RegExp(/^[0-9]+\.*[0-9]*$/);
+   if (Number.isNaN(amount) && !regex.test(amount)) {
+      return true;
+   }
+   else if (!regex.test(amount)) {
+      return true;
+   }
+   else {
+      return false;
+   }
+}
+
+/*======================================================================*/
 
 module.exports.getBalance = getBalance;
 module.exports.withdraw = withdraw;
